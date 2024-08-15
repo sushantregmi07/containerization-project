@@ -4,6 +4,8 @@ RUN git clone https://github.com/sushantregmi07/containerization-project.git
 RUN cd containerization-project && git checkout docker && mvn install
 
 FROM tomcat:9-jre11
+LABEL "Project"="Vprofile"
+LABEL "Author"="Sushant"
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY -from=BUILD_IMAGE containerization-project/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
